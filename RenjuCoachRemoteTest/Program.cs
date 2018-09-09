@@ -20,11 +20,64 @@ namespace RenjuCoachRemoteTest
             BoardMatrix boardMatrix = new BoardMatrix(15);
             boardMatrix.ChessRule = RenJunRule.PROHIBITED_NO;
             boardMatrix.User = "TestUser";
-            boardMatrix.SetMatrixPices(8, 8, 1);
-            boardMatrix.SetMatrixPices(8, 9, 2);
-            boardMatrix.SetMatrixPices(8, 10, 1);
 
-            while(true)
+            //寒星开局
+            //        8
+            //┼┼┼┼┼┼┼┼┼
+            //┼┼┼┼●┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼
+            //boardMatrix.SetMatrixPices(8, 8, 1);
+            //boardMatrix.SetMatrixPices(7, 8, 2);
+            //boardMatrix.SetMatrixPices(6, 8, 1);
+
+            //溪月开局
+            //        8
+            //┼┼┼┼┼┼┼┼┼
+            //┼┼┼┼┼●┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼
+            //boardMatrix.SetMatrixPices(8, 8, 1);
+            //boardMatrix.SetMatrixPices(7, 8, 2);
+            //boardMatrix.SetMatrixPices(6, 9, 1);
+
+            // 疏星开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼●┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            //boardMatrix.SetMatrixPices(8, 8, 1);
+            //boardMatrix.SetMatrixPices(7, 8, 2);
+            //boardMatrix.SetMatrixPices(6, 10, 1);
+
+            // 花月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×●┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            boardMatrix.SetMatrixPices(8, 8, 1);
+            boardMatrix.SetMatrixPices(7, 8, 2);
+            boardMatrix.SetMatrixPices(7, 9, 1);
+
+            // 残月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼●┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            boardMatrix.SetMatrixPices(8, 8, 1);
+            boardMatrix.SetMatrixPices(7, 8, 2);
+            boardMatrix.SetMatrixPices(7, 10, 1);
+
+
+            while (true)
             {
                 Console.WriteLine(boardMatrix.ToTextMatrix());
                 String json = boardMatrix.ToPostJson();

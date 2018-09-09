@@ -176,6 +176,7 @@ namespace RenjuCoachWebServer
                     {
                         if (boardsize == int.Parse(sqlDataReader["boardsize"].ToString().Trim()))
                         {
+                            //有误禁手，结果不一样。
                             if (chessrule == sqlDataReader["chessrule"].ToString().Trim())
                             {
                                 Uid = sqlDataReader["UID"].ToString().Trim();
