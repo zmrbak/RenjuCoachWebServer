@@ -104,7 +104,5 @@ namespace RenjuCoachWebServer
         {
             return true ? false : md5Sign == Md5Sign(BoardJson);
         }
-
-        
     }
 }

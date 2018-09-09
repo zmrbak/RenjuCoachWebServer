@@ -51,7 +51,6 @@ D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\bin\roslyn\VBC
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\bin\roslyn\VBCSCompiler.exe.config
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\obj\Debug\RenjuCoachWebServer.csprojAssemblyReference.cache
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\obj\Debug\RenjuCoachWebServer.csproj.CoreCompileInputs.cache
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\obj\Debug\RenjuCoachWebServer.csproj.CopyComplete
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\obj\Debug\RenjuCoachWebServer.dll

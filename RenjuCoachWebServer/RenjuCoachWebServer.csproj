@@ -79,6 +79,8 @@
   <ItemGroup>
     <Compile Include="BoardCheck.cs" />
     <Compile Include="BoardMatrix.cs" />
+    <Compile Include="CalculateGet.cs" />
+    <Compile Include="CalculatePost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenjunCalculate.aspx.cs">
       <DependentUpon>RenjunCalculate.aspx</DependentUpon>
@@ -87,6 +89,8 @@
     <Compile Include="RenjunCalculate.aspx.designer.cs">
       <DependentUpon>RenjunCalculate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ReturnMessage.cs" />
+    <Compile Include="SqlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
