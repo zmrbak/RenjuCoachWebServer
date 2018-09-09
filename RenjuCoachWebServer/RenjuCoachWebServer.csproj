@@ -45,6 +45,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WeiXinManager\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,10 +73,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RenjunCalculate.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardMatrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenjunCalculate.aspx.cs">
+      <DependentUpon>RenjunCalculate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RenjunCalculate.aspx.designer.cs">
+      <DependentUpon>RenjunCalculate.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
