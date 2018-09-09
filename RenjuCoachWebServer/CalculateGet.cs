@@ -13,11 +13,16 @@ namespace RenjuCoachWebServer
         public static String RenJuGetString(String uid, String boardtype)
         {
             ReturnMessage returnMsg = new ReturnMessage();
+            returnMsg.BoardType = (BOARD_TYPE)(int.Parse(boardtype));
+            returnMsg.Uid = uid;
 
             if (uid == null || uid.Trim() == "")
             {
-                return "";
+                returnMsg.Msg = "参数有误！";
+                returnMsg.Status = MsgStatus.FAILD;
+                return returnMsg.ToString();
             }
+
             //根据UID查询数据库中的计算结果
             SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.AppSettings["SqlConnectionRenjun"]);
             try
@@ -28,11 +33,14 @@ namespace RenjuCoachWebServer
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 if (sqlDataReader.Read())
                 {
+                    //String status= sqlDataReader["status"].ToString().Trim();
                     String nextstep = sqlDataReader["nextstep"].ToString().Trim();
                     if (nextstep == "")
                     {
                         //如果没有结果，则返回正在运行...
-                        returnMsg.Status = MsgStatus.Running;
+                        returnMsg.Status = MsgStatus.RUNNING;
+                        returnMsg.Msg = "正在计算中...";
+                        return returnMsg.ToString();
                     }
                     else
                     {
@@ -57,12 +65,9 @@ namespace RenjuCoachWebServer
                         else
                         {
                             //需要转换
-                            //returnMsg.BoardType = Enum.Parse(BOARD_TYPE, boardtype);
-                            //returnMsg.BoardType = Enum.Parse(typeof(BOARD_TYPE), boardtype.ToString());
-
                             BoardMatrix boardMatrix = new BoardMatrix(boardsize);
 
-                            //放上棋子
+                            //把这一颗棋子放在棋盘上
                             String[] myXy = nextstep.Split(',');
                             if ((pointsnumber + 1) % 2 == 0)
                             {
@@ -114,21 +119,27 @@ namespace RenjuCoachWebServer
                                     break;
                             }
                         }
-                        returnMsg.Status = MsgStatus.Finished;
+                        returnMsg.Status = MsgStatus.FINISHED;
                     }
+                    return returnMsg.ToString();
+                }
+                else
+                {
+                    returnMsg.Status = MsgStatus.FAILD;
+                    returnMsg.Msg = "无效UID...";
+                    return returnMsg.ToString();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                returnMsg.Msg = "";
+                returnMsg.Msg = ex.Message;
+                returnMsg.Status = MsgStatus.FAILD;
+                return returnMsg.ToString();
             }
             finally
             {
                 sqlConnection.Close();
             }
-            returnMsg.Uid = uid;
-            return returnMsg.ToString();
         }
     }
 }

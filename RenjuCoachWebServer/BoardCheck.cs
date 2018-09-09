@@ -11,7 +11,7 @@ namespace RenjuCoachWebServer
     public static class BoardCheck
     {
         /// <summary>
-        /// 棋盘字符串排序
+        /// 棋盘字符串排序,剔除sign
         /// </summary>
         /// <param name="JsonString"></param>
         /// <returns></returns>
@@ -103,6 +103,18 @@ namespace RenjuCoachWebServer
         public static Boolean CheckMd5Sign(String BoardJson, String md5Sign)
         {
             return true ? false : md5Sign == Md5Sign(BoardJson);
+        }
+
+        /// <summary>
+        /// 包含有签名的棋盘数据
+        /// </summary>
+        /// <param name="BoardJsonWithSign"></param>
+        /// <returns></returns>
+        public static Boolean CheckMd5Sign(String BoardJsonWithSign)
+        {
+            String md5String = Md5Sign(BoardJsonWithSign);
+            JObject jObject = JObject.Parse(BoardJsonWithSign);
+            return true ? false : md5String == jObject["sign"].ToString();
         }
     }
 }

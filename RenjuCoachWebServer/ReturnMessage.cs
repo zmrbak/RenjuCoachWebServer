@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,9 +24,14 @@ namespace RenjuCoachWebServer
 
         public override string ToString()
         {
-            String json = "";
-            json = "{\"status\":\"" + (int)Status + "\",\"msg\":\"" + Msg + "\",\"uid\":\"" + uid + "\",\"boardtype\":\"" + (int)boardType + "\"}";
-            return Base64Encode(json);
+            JObject jObject = new JObject();
+            jObject.Add("status", ((int)Status).ToString());
+            jObject.Add("msg", Msg);
+            jObject.Add("uid", uid);
+            jObject.Add("boardtype", ((int)boardType).ToString());
+
+            //return Base64Encode(jObject.ToString(Newtonsoft.Json.Formatting.None,null));
+            return jObject.ToString(Newtonsoft.Json.Formatting.None, null);
         }
 
         static String Base64Encode(String source)
@@ -37,26 +43,13 @@ namespace RenjuCoachWebServer
 
     public enum MsgStatus
     {
-        //失败
-        Faild = 0,
+        //内部失败
+        FAILD = 0,
         //提交成功
-        SubmitOK = 1,
+        SUBMIT_OK = 1,
         //正在计算中
-        Running = 2,
+        RUNNING = 2,
         //计算完成
-        Finished = 3,
-    }
-
-    public enum BOARD_TYPE
-    {
-        ANGLE_0 = 1,
-        ANGLE_90 = 2,
-        ANGLE_180 = 3,
-        ANGLE_270 = 4,
-
-        ANGLE_0_REVERSE_UP_DOWN_ANGLE_0 = 5,
-        ANGLE_0_REVERSE_UP_DOWN_ANGLE_90 = 6,
-        ANGLE_0_REVERSE_UP_DOWN_ANGLE_180 = 7,
-        ANGLE_0_REVERSE_UP_DOWN_ANGLE_270 = 8,
-    }
+        FINISHED = 3
+    }    
 }

@@ -29,7 +29,6 @@ namespace RenjuCoachWebServer
             }
             else
             {
-                //GET数据，先判断UID,如果没有UID，则什么都不返回
                 String uid = Request.QueryString["uid"];
                 String boardtype = Request.QueryString["boardtype"];
 
