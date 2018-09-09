@@ -56,3 +56,4 @@ D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\obj\Debug\Renj
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\obj\Debug\RenjuCoachWebServer.csproj.CopyComplete
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\obj\Debug\RenjuCoachWebServer.dll
 D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\obj\Debug\RenjuCoachWebServer.pdb
+D:\Users\ZQM\source\repos\RenjuCoachWebServer\RenjuCoachWebServer\bin\Newtonsoft.Json.dll
