@@ -26,10 +26,13 @@ namespace RenjuCoachWebServer
         /// 初始化棋盘,必要参数，棋盘大小
         /// </summary>
         /// <param name="boardSiz"></param>
-        public BoardMatrix(int boardSiz)
+        public BoardMatrix(int boardSiz, RenJunRule chessRule = RenJunRule.PROHIBITED_NO, String user = "RenjunTester")
         {
             this.boardSiz = boardSiz;
             metrix = new int[boardSiz, boardSiz];
+
+            this.chessRule = chessRule;
+            this.user = user;
         }
 
         //放置棋子，行列开始数字为1，数组中开始为0
@@ -187,7 +190,7 @@ namespace RenjuCoachWebServer
         public String ToPostJson()
         {
             JObject jObject = new JObject();
-            
+
             //棋盘大小
             jObject.Add("boardsize", boardSiz);
 
@@ -232,7 +235,7 @@ namespace RenjuCoachWebServer
             jObject.Add("timestamp", DateTime.Now.ToString());
 
             //签名
-            jObject.Add("sign", Md5Sign(jObject.ToString(Newtonsoft.Json.Formatting.None, null)));
+            jObject.Add("sign", BoardCheck.Md5Sign(jObject.ToString(Newtonsoft.Json.Formatting.None, null)));
 
             return jObject.ToString(Newtonsoft.Json.Formatting.None, null);
         }
@@ -259,95 +262,163 @@ namespace RenjuCoachWebServer
             return boardMatrix;
         }
 
-        public String SortedBoardString(String JsonString)
+        public BoardMatrix MatrixReverseUpDown()
         {
-            JObject jObject = JObject.Parse(JsonString);
-
-            //棋盘基本信息
-            List<Tuple<String, String>> JsonKeys = new List<Tuple<string, string>>();
-            foreach (KeyValuePair<String, JToken> jsonKeys in jObject)
+            BoardMatrix boardMatrix = new BoardMatrix(boardSiz);
+            //行
+            //上下反转
+            for (int i = 0; i < boardSiz; i++)
             {
-                if (jsonKeys.Key == "sign") continue;
-                JsonKeys.Add(new Tuple<string, string>(jsonKeys.Key, jsonKeys.Value.ToString()));
-            }
-            JsonKeys.Sort();
-
-
-            //提取棋子，排序
-            List<Tuple<int, int, int>> PointsList = new List<Tuple<int, int, int>>();
-            JArray jPoints = JArray.Parse(jObject["points"].ToString());
-            for (var i = 0; i < jPoints.Count; i++)
-            {
-                JObject js = JObject.Parse(jPoints[i].ToString());
-                String location = js["location"].ToString();
-                string[] locations = location.Split(',');
-                int row = int.Parse(locations[0]);
-                int col = int.Parse(locations[1]);
-                int player = int.Parse(js["player"].ToString());
-                PointsList.Add(new Tuple<int, int, int>(row, col, player));
-            }
-            PointsList.Sort();
-
-            //排序后的棋子
-            JArray jNewPoints = new JArray();
-            foreach (var item in PointsList)
-            {
-                JObject Jpoint = new JObject();
-                Jpoint.Add("location", item.Item1 + "," + item.Item2);
-                Jpoint.Add("player", item.Item3);
-                jNewPoints.Add(Jpoint);
-            }
-
-            //排序后的棋子
-            JObject jNewBoard = new JObject();
-            foreach (var item in JsonKeys)
-            {
-                if (item.Item1 == "points")
+                //列
+                for (int j = 0; j < boardSiz; j++)
                 {
-                    jNewBoard.Add("points", jNewPoints);
-                    continue;
+                    //行列交换
+                    //当前行=boardSiz-i
+                    boardMatrix.setPices(i, j, metrix[boardSiz - i - 1, j]);
                 }
-
-                jNewBoard.Add(item.Item1, item.Item2);
             }
-
-            //棋盘字符串
-            return jNewBoard.ToString(Newtonsoft.Json.Formatting.None, null);
+            return boardMatrix;
         }
 
-        /// <summary>
-        /// Md5签名
-        /// </summary>
-        /// <param name="JsonString"></param>
-        /// <returns></returns>
-        public String Md5Sign(String JsonString)
+        public BoardMatrix ReMatrixReverseUpDown()
         {
-            String SortedJsonString = SortedBoardString(JsonString);
-
-            //MD5签名
-            byte[] sor = Encoding.UTF8.GetBytes(SortedJsonString);
-            MD5 md5 = MD5.Create();
-            byte[] result = md5.ComputeHash(sor);
-            StringBuilder strbul = new StringBuilder(40);
-            for (int i = 0; i < result.Length; i++)
-            {
-                //加密结果"x2"结果为32位,"x3"结果为48位,"x4"结果为64位
-                strbul.Append(result[i].ToString("x2"));
-            }
-            return strbul.ToString();
+            return MatrixReverseUpDown();
         }
 
-
         /// <summary>
-        /// 检查MD5签名
+        /// 判断棋盘上的棋是否已经结束
         /// </summary>
         /// <param name="BoardJson"></param>
-        /// <param name="md5Sign"></param>
         /// <returns></returns>
-        public Boolean CheckMd5Sign(String BoardJson,String md5Sign)
+        public Boolean IsChessExited(String BoardJson)
         {
-            return true ? false : md5Sign == Md5Sign(BoardJson);
+            int count_w = 0;
+            int count_b = 0;
+            //横
+            for (int i = 0; i < boardSiz; i++)
+            {
+                count_w = 0;
+                count_b = 0;
+
+                for (int j = 0; j < boardSiz; j++)
+                {
+                    if (metrix[i, j] == 1)
+                    {
+                        count_b++;
+                        count_w = 0;
+                        if (count_b >= 5) return true;
+                        continue;
+                    }
+
+                    if (metrix[i, j] == 2)
+                    {
+                        count_b = 0;
+                        count_w++;
+                        if (count_w >= 5) return true;
+                        continue;
+                    }
+
+                    count_b = 0;
+                    count_w = 0;
+                }
+            }
+
+            //竖
+            for (int i = 0; i < boardSiz; i++)
+            {
+                count_w = 0;
+                count_b = 0;
+
+                for (int j = 0; j < boardSiz; j++)
+                {
+                    if (metrix[j, i] == 1)
+                    {
+                        count_b++;
+                        count_w = 0;
+                        if (count_b >= 5) return true;
+                        continue;
+                    }
+
+                    if (metrix[j, i] == 2)
+                    {
+                        count_b = 0;
+                        count_w++;
+                        if (count_w >= 5) return true;
+                        continue;
+                    }
+
+                    count_b = 0;
+                    count_w = 0;
+                }
+            }
+
+            //左上，右下
+            for (int i = 0; i < boardSiz - 5; i++)
+            {
+                count_w = 0;
+                count_b = 0;
+                for (int j = 0; j < boardSiz - 5; j++)
+                {
+                    for (int k = 0; k < 5; k++)
+                    {
+                        if (metrix[j + k, i + k] == 1)
+                        {
+                            count_b++;
+                            count_w = 0;
+                            if (count_b >= 5) return true;
+                            continue;
+                        }
+
+                        if (metrix[j + k, i + k] == 2)
+                        {
+                            count_b = 0;
+                            count_w++;
+                            if (count_w >= 5) return true;
+                            continue;
+                        }
+                    }
+                    count_b = 0;
+                    count_w = 0;
+                }
+            }
+
+
+            //右上，左下
+            //行
+            for (int i = 0; i < boardSiz - 5; i++)
+            {
+                count_w = 0;
+                count_b = 0;
+                //列
+                for (int j = 5; j < boardSiz; j++)
+                {
+                    for (int k = 0; k < 5; k++)
+                    {
+                        if (metrix[i + k, j - k] == 1)
+                        {
+                            count_b++;
+                            count_w = 0;
+                            if (count_b >= 5) return true;
+                            continue;
+                        }
+
+                        if (metrix[j + k, i - k] == 2)
+                        {
+                            count_b = 0;
+                            count_w++;
+                            if (count_w >= 5) return true;
+                            continue;
+                        }
+                    }
+                    count_b = 0;
+                    count_w = 0;
+                }
+            }
+
+            //没有超过五子，未分胜负
+            return false;
         }
+
     }
     /// <summary>
     ///棋盘旋转角度 

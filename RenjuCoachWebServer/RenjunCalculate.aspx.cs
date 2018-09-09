@@ -83,14 +83,14 @@ namespace RenjuCoachWebServer
                     //同一盘棋，各类变种
                     List<KeyValuePair<BOARD_TYPE, BoardMatrix>> wzqStringArryList = new List<KeyValuePair<BOARD_TYPE, BoardMatrix>>();
                     BoardMatrix ANGLE_0 = boardMatrix;
-                    BoardMatrix ANGLE_90 = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_90);
-                    BoardMatrix ANGLE_180 = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_180);
-                    BoardMatrix ANGLE_270 = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_270);
+                    BoardMatrix ANGLE_90 = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_90);
+                    BoardMatrix ANGLE_180 = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_180);
+                    BoardMatrix ANGLE_270 = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_270);
 
                     BoardMatrix ANGLE_0_REVERSE_UP_DOWN_ANGLE_0 = ANGLE_0.MatrixReverseUpDown();
-                    BoardMatrix ANGLE_0_REVERSE_UP_DOWN_ANGLE_90 = ANGLE_0_REVERSE_UP_DOWN_ANGLE_0.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_90);
-                    BoardMatrix ANGLE_0_REVERSE_UP_DOWN_ANGLE_180 = ANGLE_0_REVERSE_UP_DOWN_ANGLE_0.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_180);
-                    BoardMatrix ANGLE_0_REVERSE_UP_DOWN_ANGLE_270 = ANGLE_0_REVERSE_UP_DOWN_ANGLE_0.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_270);
+                    BoardMatrix ANGLE_0_REVERSE_UP_DOWN_ANGLE_90 = ANGLE_0_REVERSE_UP_DOWN_ANGLE_0.MatrixTranspose(MatrixTransposeAngle.ANGLE_90);
+                    BoardMatrix ANGLE_0_REVERSE_UP_DOWN_ANGLE_180 = ANGLE_0_REVERSE_UP_DOWN_ANGLE_0.MatrixTranspose(MatrixTransposeAngle.ANGLE_180);
+                    BoardMatrix ANGLE_0_REVERSE_UP_DOWN_ANGLE_270 = ANGLE_0_REVERSE_UP_DOWN_ANGLE_0.MatrixTranspose(MatrixTransposeAngle.ANGLE_270);
 
                     
 
@@ -291,15 +291,15 @@ namespace RenjuCoachWebServer
                                         returnMsg.BoardType = BOARD_TYPE.ANGLE_0;
                                         break;
                                     case (int)BOARD_TYPE.ANGLE_90:
-                                        returnMsg.Msg = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_R90).ToString();
+                                        returnMsg.Msg = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_R90).ToString();
                                         returnMsg.BoardType = BOARD_TYPE.ANGLE_90;
                                         break;
                                     case (int)BOARD_TYPE.ANGLE_180:
-                                        returnMsg.Msg = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_R180).ToString();
+                                        returnMsg.Msg = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_R180).ToString();
                                         returnMsg.BoardType = BOARD_TYPE.ANGLE_180;
                                         break;
                                     case (int)BOARD_TYPE.ANGLE_270:
-                                        returnMsg.Msg = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_R270).ToString();
+                                        returnMsg.Msg = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_R270).ToString();
                                         returnMsg.BoardType = BOARD_TYPE.ANGLE_270;
                                         break;
                                     case (int)BOARD_TYPE.ANGLE_0_REVERSE_UP_DOWN_ANGLE_0:
@@ -307,15 +307,15 @@ namespace RenjuCoachWebServer
                                         returnMsg.BoardType = BOARD_TYPE.ANGLE_0_REVERSE_UP_DOWN_ANGLE_0;
                                         break;
                                     case (int)BOARD_TYPE.ANGLE_0_REVERSE_UP_DOWN_ANGLE_90:
-                                        returnMsg.Msg = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_R90).MatrixReverseUpDown().ToString();
+                                        returnMsg.Msg = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_R90).MatrixReverseUpDown().ToString();
                                         returnMsg.BoardType = BOARD_TYPE.ANGLE_0_REVERSE_UP_DOWN_ANGLE_90;
                                         break;
                                     case (int)BOARD_TYPE.ANGLE_0_REVERSE_UP_DOWN_ANGLE_180:
-                                        returnMsg.Msg = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_R180).MatrixReverseUpDown().ToString();
+                                        returnMsg.Msg = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_R180).MatrixReverseUpDown().ToString();
                                         returnMsg.BoardType = BOARD_TYPE.ANGLE_0_REVERSE_UP_DOWN_ANGLE_180;
                                         break;
                                     case (int)BOARD_TYPE.ANGLE_0_REVERSE_UP_DOWN_ANGLE_270:
-                                        returnMsg.Msg = boardMatrix.MatrixTranspose(BoardMatrix.MatrixTransposeAngle.ANGLE_R270).MatrixReverseUpDown().ToString();
+                                        returnMsg.Msg = boardMatrix.MatrixTranspose(MatrixTransposeAngle.ANGLE_R270).MatrixReverseUpDown().ToString();
                                         returnMsg.BoardType = BOARD_TYPE.ANGLE_0_REVERSE_UP_DOWN_ANGLE_270;
                                         break;
                                     default:
