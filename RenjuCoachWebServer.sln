@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenjuCoachWebServer", "Renj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenjuCoachRemoteTest", "RenjuCoachRemoteTest\RenjuCoachRemoteTest.csproj", "{378BE2D6-E165-49EF-994B-D9C72B47FE73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeRenjuLib", "MakeRenjuLib\MakeRenjuLib.csproj", "{B761B805-40F4-4F59-B95C-4F3F50276C6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{378BE2D6-E165-49EF-994B-D9C72B47FE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{378BE2D6-E165-49EF-994B-D9C72B47FE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{378BE2D6-E165-49EF-994B-D9C72B47FE73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B761B805-40F4-4F59-B95C-4F3F50276C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B761B805-40F4-4F59-B95C-4F3F50276C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B761B805-40F4-4F59-B95C-4F3F50276C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B761B805-40F4-4F59-B95C-4F3F50276C6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
