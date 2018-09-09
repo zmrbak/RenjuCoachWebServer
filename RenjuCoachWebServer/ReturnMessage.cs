@@ -50,6 +50,8 @@ namespace RenjuCoachWebServer
         //正在计算中
         RUNNING = 2,
         //计算完成
-        FINISHED = 3
+        FINISHED = 3,
+        //无效棋盘
+        INVALID=4,
     }    
 }

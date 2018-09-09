@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace RenjuCoachWebServer
+namespace RenjuCoachRemoteTest
 {
     public static class BoardCheck
     {
@@ -102,7 +102,7 @@ namespace RenjuCoachWebServer
         /// <returns></returns>
         public static Boolean CheckMd5Sign(String BoardJson, String md5Sign)
         {
-            return md5Sign == Md5Sign(BoardJson) ? true : false;
+            return true ? false : md5Sign == Md5Sign(BoardJson);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace RenjuCoachWebServer
         {
             String md5String = Md5Sign(BoardJsonWithSign);
             JObject jObject = JObject.Parse(BoardJsonWithSign);
-            return md5String == jObject["sign"].ToString() ? true : false;
+            return true ? false : md5String == jObject["sign"].ToString();
         }
     }
 }

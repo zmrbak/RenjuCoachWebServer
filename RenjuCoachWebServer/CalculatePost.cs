@@ -31,7 +31,7 @@ namespace RenjuCoachWebServer
                 //重新排列棋子
                 JObject jObject = JObject.Parse(postedString);
                 int boardsize = int.Parse(jObject.Property("boardsize").Value.ToString());
-                String pointsnumber = jObject.Property("pointsnumber").Value.ToString();
+                String pointsnumber = jObject.Property("pointsnumbers").Value.ToString();
                 String points = jObject.Property("points").Value.ToString();
                 String chessrule = jObject.Property("chessrule").Value.ToString();
                 JArray jArray = JArray.Parse(points);
@@ -78,7 +78,6 @@ namespace RenjuCoachWebServer
                 {
                     String xy = item.Property("location").Value.ToString();
                     String player = item.Property("player").Value.ToString();
-                    xy = xy.Substring(1, xy.Length - 2);
                     String[] myXy = xy.Split(',');
 
                     int x = int.Parse(myXy[0]);
@@ -102,6 +101,16 @@ namespace RenjuCoachWebServer
                     }
                     boardMatrix.SetMatrixPices(x, y,p);
                 }
+
+                //检查是否结束（五子连起）
+                if(boardMatrix.IsChessExited()==true)
+                {
+                    returnMsg.Status = MsgStatus.INVALID;
+                    returnMsg.Msg = "无效棋盘，棋已结束！";
+                    returnMsg.Uid = "";
+                    return returnMsg.ToString();
+                }
+
 
                 //同一盘棋，八个变种（棋盘旋转，反转）
                 List<KeyValuePair<BOARD_TYPE, BoardMatrix>> wzqStringArryList = new List<KeyValuePair<BOARD_TYPE, BoardMatrix>>();

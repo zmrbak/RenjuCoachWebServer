@@ -13,8 +13,6 @@ namespace RenjuCoachWebServer
         public static String RenJuGetString(String uid, String boardtype)
         {
             ReturnMessage returnMsg = new ReturnMessage();
-            returnMsg.BoardType = (BOARD_TYPE)(int.Parse(boardtype));
-            returnMsg.Uid = uid;
 
             if (uid == null || uid.Trim() == "")
             {
@@ -22,6 +20,16 @@ namespace RenjuCoachWebServer
                 returnMsg.Status = MsgStatus.FAILD;
                 return returnMsg.ToString();
             }
+
+            if (boardtype == null || boardtype.Trim() == "")
+            {
+                returnMsg.Msg = "参数有误！";
+                returnMsg.Uid = uid;
+                returnMsg.Status = MsgStatus.FAILD;
+                return returnMsg.ToString();
+            }
+            returnMsg.Uid = uid;
+            returnMsg.BoardType = (BOARD_TYPE)(int.Parse(boardtype));
 
             //根据UID查询数据库中的计算结果
             SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.AppSettings["SqlConnectionRenjun"]);

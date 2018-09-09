@@ -1,15 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Messaging;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace RenjuCoachWebServer
 {
