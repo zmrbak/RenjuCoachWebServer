@@ -12,8 +12,8 @@ namespace RenjuCoachRemoteTest
     class Program
     {
         public static String result = "";
-        //public static String uri = "http://202.115.129.217:9799/Renju/RenJun.aspx";
-        public static String uri = "http://localhost:62088/Renjun.aspx";
+        public static String uri = "http://202.115.129.217:9799/Renju/RenJun.aspx";
+        //public static String uri = "http://localhost:62088/Renjun.aspx";
         public static String LastResult = "";
         public static Boolean GotResult = true;
         public static Boolean RunFinished = true;
@@ -23,167 +23,7 @@ namespace RenjuCoachRemoteTest
             List<ArrayList> renJunStartList = new List<ArrayList>();
             ArrayList array = new ArrayList();
 
-            //寒星开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼●┼┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("6, 8, 1");
-            renJunStartList.Add(array);
-
-            //溪月开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼●┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("6, 9, 1");
-            renJunStartList.Add(array);
-
-            // 疏星开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼●┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("6, 10, 1");
-            renJunStartList.Add(array);
-
-            // 花月开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×●┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("7, 9, 1");
-            renJunStartList.Add(array);
-
-
-            // 残月开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×┼●┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("7, 10, 1");
-            renJunStartList.Add(array);
-
-            // 雨月开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●●┼┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("8, 9, 1");
-            renJunStartList.Add(array);
-
-
-            // 金星开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼●┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("8, 10, 1");
-            renJunStartList.Add(array);
-
-
-            // 松月开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼●┼┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("9, 8, 1");
-            renJunStartList.Add(array);
-
-            // 丘月开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼●┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("9, 9, 1");
-            renJunStartList.Add(array);
-
-            // 新月开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼┼●┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("9, 10, 1");
-            renJunStartList.Add(array);
-
-            // 瑞星开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            //┼┼┼┼●┼┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("10, 8, 1");
-            renJunStartList.Add(array);
-
-            // 山月开局
-            //4 5 6 7 8 9 101112
-            //┼┼┼┼┼┼┼┼┼5
-            //┼┼┼┼┼┼┼┼┼6
-            //┼┼┼┼×┼┼┼┼7
-            //┼┼┼┼●┼┼┼┼8
-            //┼┼┼┼┼┼┼┼┼9
-            //┼┼┼┼┼●┼┼┼9
-            array = new ArrayList();
-            array.Add("8, 8, 1");
-            array.Add("7, 8, 2");
-            array.Add("10, 9, 1");
-            renJunStartList.Add(array);
-
-            // 长星开局
+            #region 1、长星开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -196,9 +36,8 @@ namespace RenjuCoachRemoteTest
             array.Add("9, 7, 2");
             array.Add("10, 6, 1");
             renJunStartList.Add(array);
-
-
-            // 峡月开局
+            #endregion
+            #region 2、峡月开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -211,8 +50,8 @@ namespace RenjuCoachRemoteTest
             array.Add("8, 7, 2");
             array.Add("9, 6, 1");
             renJunStartList.Add(array);
-
-            // 恒星开局
+            #endregion
+            #region 3、恒星开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -225,8 +64,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 7, 2");
             array.Add("8, 6, 1");
             renJunStartList.Add(array);
-
-            // 水月开局
+            #endregion
+            #region 4、水月开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -239,8 +78,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 9, 2");
             array.Add("9, 10, 1");
             renJunStartList.Add(array);
-
-            // 流星开局
+            #endregion
+            #region 5、流星开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -253,8 +92,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 9, 2");
             array.Add("10, 10, 1");
             renJunStartList.Add(array);
-
-            // 云月开局
+            #endregion
+            #region 6、云月开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -267,8 +106,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 8, 2");
             array.Add("8, 7, 1");
             renJunStartList.Add(array);
-
-            // 浦月开局
+            #endregion
+            #region 7、浦月开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -281,8 +120,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 9, 2");
             array.Add("9, 9, 1");
             renJunStartList.Add(array);
-
-            // 岚月开局
+            #endregion
+            #region 8、岚月开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -295,9 +134,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 9, 2");
             array.Add("10, 9, 1");
             renJunStartList.Add(array);
-
-
-            // 银月开局
+            #endregion
+            #region 9、银月开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -310,9 +148,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 9, 2");
             array.Add("9, 8, 1");
             renJunStartList.Add(array);
-
-
-            // 明星开局
+            #endregion
+            #region 10、明星开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -325,8 +162,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 9, 2");
             array.Add("10, 8, 1");
             renJunStartList.Add(array);
-
-            // 斜月开局
+            #endregion
+            #region 11、斜月开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -339,8 +176,8 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 9, 2");
             array.Add("9, 7, 1");
             renJunStartList.Add(array);
-
-            // 名月开局
+            #endregion
+            #region 12、名月开局
             //4 5 6 7 8 9 101112
             //┼┼┼┼┼┼┼┼┼5
             //┼┼┼┼┼┼┼┼┼6
@@ -353,7 +190,191 @@ namespace RenjuCoachRemoteTest
             array.Add("7, 9, 2");
             array.Add("10, 6, 1");
             renJunStartList.Add(array);
-
+            #endregion
+            #region 13、彗星开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼┼×┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            //┼┼●┼┼┼┼┼┼10
+            array.Add("8, 8, 1");
+            array.Add("7, 9, 2");
+            array.Add("10, 6, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 14、寒星开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼●┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("6, 8, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 15、溪月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼●┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("6, 9, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 16、疏星开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼●┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("6, 10, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 17、花月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×●┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("7, 9, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 18、残月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼●┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("7, 10, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 19、雨月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●●┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("8, 9, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 20、金星开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼●┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("8, 10, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 21、松月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼●┼┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("9, 8, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 22、丘月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼●┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("9, 9, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 23、新月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼●┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("9, 10, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 24、瑞星开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            //┼┼┼┼●┼┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("10, 8, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 25、山月开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            //┼┼┼┼┼●┼┼┼9
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("10, 9, 1");
+            renJunStartList.Add(array);
+            #endregion
+            #region 26、游星开局
+            //4 5 6 7 8 9 101112
+            //┼┼┼┼┼┼┼┼┼5
+            //┼┼┼┼┼┼┼┼┼6
+            //┼┼┼┼×┼┼┼┼7
+            //┼┼┼┼●┼┼┼┼8
+            //┼┼┼┼┼┼┼┼┼9
+            //┼┼┼┼┼┼●┼┼10
+            array = new ArrayList();
+            array.Add("8, 8, 1");
+            array.Add("7, 8, 2");
+            array.Add("10, 10, 1");
+            renJunStartList.Add(array);
+            #endregion
 
             foreach (var items in renJunStartList)
             {
@@ -369,41 +390,32 @@ namespace RenjuCoachRemoteTest
                     boardMatrix.SetMatrixPices(int.Parse(myPoints[0]), int.Parse(myPoints[1]), int.Parse(myPoints[2]));
                 }
 
-                Console.WriteLine(boardMatrix.ToTextMatrix());
-                String json = boardMatrix.ToPostJson();
-                HttpClientDoPost(json);
+                while (true)
+                {
+                    Console.WriteLine(boardMatrix.ToTextMatrix());
+                    String json = boardMatrix.ToPostJson();
+                    HttpClientDoPost(json);
 
-                Console.WriteLine(json);
+                    if (RunFinished == true)
+                    {
+                        break;
+                    }
 
-                //while (true)
-                //{
-                //    Console.WriteLine(boardMatrix.ToTextMatrix());
-                //    String json = boardMatrix.ToPostJson();
-                //    HttpClientDoPost(json);
+                    while (GotResult == false)
+                    {
+                        Thread.Sleep(100);
+                    }
 
-                //    //if(RunFinished==true)
-                //    //{
-                //    //    break;
-                //    //}
+                    String[] point = LastResult.Split(',');
+                    if (point.Length < 3) continue;
 
-                //    while (GotResult == false)
-                //    {
-                //        Thread.Sleep(100);
-                //    }
-
-                //    String[] point = LastResult.Split(',');
-                //    if (point.Length < 3) continue;
-
-                //    int x = int.Parse(point[0]);
-                //    int y = int.Parse(point[1]);
-                //    int p = int.Parse(point[2]);
-                //    boardMatrix.SetMatrixPices(x, y, p);
-                //}
+                    int x = int.Parse(point[0]);
+                    int y = int.Parse(point[1]);
+                    int p = int.Parse(point[2]);
+                    boardMatrix.SetMatrixPices(x, y, p);
+                }
 
             }
-           
-
-            
         }
 
         /// <summary>
@@ -431,7 +443,7 @@ namespace RenjuCoachRemoteTest
                 //在这里会等待task返回。
                 var responseString = task2.Result;
 
-                Console.WriteLine("POST RESULT:\t" + responseString);
+                //Console.WriteLine("POST RESULT:\t" + responseString);
 
                 JObject jObject = JObject.Parse(responseString);
                 if (jObject.Property("status").Value.ToString() == "4")
@@ -475,7 +487,7 @@ namespace RenjuCoachRemoteTest
                 //在这里会等待task返回。
                 var retString = task2.Result;
 
-                Console.Write(retString);
+                //Console.Write(retString);
                 JObject json = JObject.Parse(retString);
                 if (json.Property("status").Value.ToString() == "3")
                 {
