@@ -99,7 +99,7 @@ namespace RenjuCoachWebServer
                         returnMsg.Uid = "";
                         return returnMsg.ToString();
                     }
-                    boardMatrix.SetMatrixPices(x, y,p);
+                    boardMatrix.SetMatrixPices(x, y, p);
                 }
 
                 //检查是否结束（五子连起）
@@ -170,20 +170,19 @@ namespace RenjuCoachWebServer
                 {
                     sqlConnection.Open();
                     SqlCommand sqlCommand = new SqlCommand("", sqlConnection);
-                    sqlCommand.CommandText = "SELECT * FROM ChessBoard WHERE " + CheckSQLString;
+
+                    sqlCommand.CommandText = "SELECT * FROM ChessBoard WHERE boardsize=@boardsize and chessrule=@chessrule and (" + CheckSQLString+" )";
+                    SqlParameter sqlParameterBoardsize = new SqlParameter("@boardsize", boardsize);
+                    SqlParameter sqlParameterChessrule = new SqlParameter("@chessrule", chessrule);
+                    sqlCommand.Parameters.Add(sqlParameterBoardsize);
+                    sqlCommand.Parameters.Add(sqlParameterChessrule);
+
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     if (sqlDataReader.Read())
                     {
-                        if (boardsize == int.Parse(sqlDataReader["boardsize"].ToString().Trim()))
-                        {
-                            //有误禁手，结果不一样。
-                            if (chessrule == sqlDataReader["chessrule"].ToString().Trim())
-                            {
-                                Uid = sqlDataReader["UID"].ToString().Trim();
-                                pointsFromDataBase = sqlDataReader["points"].ToString().Trim();
-                                boardExist = true;
-                            }
-                        }
+                        Uid = sqlDataReader["UID"].ToString().Trim();
+                        pointsFromDataBase = sqlDataReader["points"].ToString().Trim();
+                        boardExist = true;
                     }
                 }
                 catch (Exception ex)

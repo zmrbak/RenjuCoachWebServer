@@ -12,8 +12,8 @@ namespace RenjuCoachRemoteTest
     class Program
     {
         public static String result = "";
-        public static String uri = "http://202.115.129.217:9799/Renju/RenJun.aspx";
-        //public static String uri = "http://localhost:62088/Renjun.aspx";
+        //public static String uri = "http://202.115.129.217:9799/Renju/RenJun.aspx";
+        public static String uri = "http://localhost:62088/Renjun.aspx";
         public static String LastResult = "";
         public static Boolean GotResult = true;
         public static Boolean RunFinished = true;
@@ -369,30 +369,36 @@ namespace RenjuCoachRemoteTest
                     boardMatrix.SetMatrixPices(int.Parse(myPoints[0]), int.Parse(myPoints[1]), int.Parse(myPoints[2]));
                 }
 
-                while (true)
-                {
-                    Console.WriteLine(boardMatrix.ToTextMatrix());
-                    String json = boardMatrix.ToPostJson();
-                    HttpClientDoPost(json);
+                Console.WriteLine(boardMatrix.ToTextMatrix());
+                String json = boardMatrix.ToPostJson();
+                HttpClientDoPost(json);
 
-                    if(RunFinished==true)
-                    {
-                        break;
-                    }
+                Console.WriteLine(json);
 
-                    while (GotResult == false)
-                    {
-                        Thread.Sleep(100);
-                    }
+                //while (true)
+                //{
+                //    Console.WriteLine(boardMatrix.ToTextMatrix());
+                //    String json = boardMatrix.ToPostJson();
+                //    HttpClientDoPost(json);
 
-                    String[] point = LastResult.Split(',');
-                    if (point.Length < 3) continue;
+                //    //if(RunFinished==true)
+                //    //{
+                //    //    break;
+                //    //}
 
-                    int x = int.Parse(point[0]);
-                    int y = int.Parse(point[1]);
-                    int p = int.Parse(point[2]);
-                    boardMatrix.SetMatrixPices(x, y, p);
-                }
+                //    while (GotResult == false)
+                //    {
+                //        Thread.Sleep(100);
+                //    }
+
+                //    String[] point = LastResult.Split(',');
+                //    if (point.Length < 3) continue;
+
+                //    int x = int.Parse(point[0]);
+                //    int y = int.Parse(point[1]);
+                //    int p = int.Parse(point[2]);
+                //    boardMatrix.SetMatrixPices(x, y, p);
+                //}
 
             }
            
@@ -425,7 +431,7 @@ namespace RenjuCoachRemoteTest
                 //在这里会等待task返回。
                 var responseString = task2.Result;
 
-                //Console.WriteLine("POST RESULT:\t" + responseString);
+                Console.WriteLine("POST RESULT:\t" + responseString);
 
                 JObject jObject = JObject.Parse(responseString);
                 if (jObject.Property("status").Value.ToString() == "4")
@@ -469,7 +475,7 @@ namespace RenjuCoachRemoteTest
                 //在这里会等待task返回。
                 var retString = task2.Result;
 
-                //Console.Write(retString);
+                Console.Write(retString);
                 JObject json = JObject.Parse(retString);
                 if (json.Property("status").Value.ToString() == "3")
                 {
